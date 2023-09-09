@@ -87,9 +87,9 @@ class Node
         return false;
     }
 
-    bool isEmpty() { return ( next == nullptr ); }
+    bool isEmpty() const { return ( next == nullptr ); }
 
-    int32_t getSize()
+    int32_t getSize() const
     {
         int32_t len{ 0 };
         auto*   node = this;
@@ -103,9 +103,9 @@ class Node
         return len;
     }
 
-    void showList()
+    void showList() const
     {
-        Node*   currNode = this;
+        const Node*   currNode = this;
         int32_t index{ 0 };
         while ( currNode != nullptr )
         {
