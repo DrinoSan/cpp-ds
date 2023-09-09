@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 
 class Node
@@ -8,6 +9,8 @@ class Node
 
   public:
     Node( int32_t data ) : data{ data } {}
+
+    void printNode() { std::cout << "Data: " << data << std::endl; }
 
     void insertNodeAtEnd( int32_t value )
     {
@@ -111,6 +114,51 @@ class Node
             currNode = currNode->next;
         }
     }
+
+    // The 0th element would be the end
+    Node* getNthNodeFromEnd( int32_t n )
+    {
+        int32_t listLen = getSize();
+        if ( n > listLen )
+        {
+            std::cout << "N larger than size of linked list" << std::endl;
+            return nullptr;
+        }
+
+        int32_t nthElement = listLen - n;
+        Node*   currNode   = this;
+        // Starting at one because we are at the head alrady
+        for ( int32_t i = 1; i < nthElement; ++i )
+        {
+            currNode = currNode->next;
+        }
+
+        return currNode;
+    }
+
+    Node* getNthNodeFromEndDoublePointer( int32_t n )
+	{
+		if( n > getSize() )
+		{
+			std::cout << "N larger than size of linked list" << std::endl;
+			return nullptr;
+		}
+
+		Node* lazy = this;
+		Node* runner = lazy;
+		for( int32_t i = 0; i < n; ++i )
+		{
+			runner = runner->next;
+		}
+
+		while( runner->next != nullptr )
+		{
+			runner = runner->next;
+			lazy = lazy->next;
+		}
+
+		return lazy;
+	}
 };
 
 int main()
@@ -142,6 +190,14 @@ int main()
         std::cout << "Node with value " << searchValue << " not found."
                   << std::endl;
     }
+
+    Node* nthElement = head->getNthNodeFromEnd( 0 );
+    if ( nthElement != nullptr )
+        nthElement->printNode();
+
+	Node* nthElement2 = head->getNthNodeFromEndDoublePointer(0);
+	if( nthElement2 != nullptr )
+		nthElement2->printNode();
 
     return 0;
 }
