@@ -9,8 +9,6 @@ class A
     char y3;
     char y4;
     int  x;
-
-    void getXAddress() { std::cout << "Address of y: " << &y << std::endl; }
 };
 
 struct S
