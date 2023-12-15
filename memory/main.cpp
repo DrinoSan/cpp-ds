@@ -72,4 +72,8 @@ int main( int argc, char* argv[] )
               << "offset of double m1 = " << offsetof( S, m1 ) << '\n'
               << "offset of short  m2 = " << offsetof( S, m2 ) << '\n'
               << "offset of char   m3 = " << offsetof( S, m3 ) << '\n';
+
+
+    // Note: Padding happens in 4 byte steps.
+    // Remove some y members and see that the starting of x will be moved 4bytes up or down
 }
