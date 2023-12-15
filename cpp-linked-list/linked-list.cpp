@@ -5,7 +5,7 @@ class Node
 {
   private:
     int32_t data;
-    Node*   next = nullptr;
+        Node*   next = nullptr;
 
   public:
     Node( int32_t data ) : data{ data } {}
@@ -35,6 +35,7 @@ class Node
         Node* newNode = new Node( value );
         newNode->next = this;
 
+        return newNode;
         return newNode;
     }
 
@@ -105,8 +106,8 @@ class Node
 
     void showList() const
     {
-        const Node*   currNode = this;
-        int32_t index{ 0 };
+        const Node* currNode = this;
+        int32_t     index{ 0 };
         while ( currNode != nullptr )
         {
             std::cout << " -- N(" << index++ << ") Val(" << currNode->data
@@ -137,28 +138,28 @@ class Node
     }
 
     Node* getNthNodeFromEndDoublePointer( int32_t n )
-	{
-		if( n > getSize() )
-		{
-			std::cout << "N larger than size of linked list" << std::endl;
-			return nullptr;
-		}
+    {
+        if ( n > getSize() )
+        {
+            std::cout << "N larger than size of linked list" << std::endl;
+            return nullptr;
+        }
 
-		Node* lazy = this;
-		Node* runner = lazy;
-		for( int32_t i = 0; i < n; ++i )
-		{
-			runner = runner->next;
-		}
+        Node* lazy   = this;
+        Node* runner = lazy;
+        for ( int32_t i = 0; i < n; ++i )
+        {
+            runner = runner->next;
+        }
 
-		while( runner->next != nullptr )
-		{
-			runner = runner->next;
-			lazy = lazy->next;
-		}
+        while ( runner->next != nullptr )
+        {
+            runner = runner->next;
+            lazy   = lazy->next;
+        }
 
-		return lazy;
-	}
+        return lazy;
+    }
 };
 
 int main()
@@ -195,9 +196,9 @@ int main()
     if ( nthElement != nullptr )
         nthElement->printNode();
 
-	Node* nthElement2 = head->getNthNodeFromEndDoublePointer(0);
-	if( nthElement2 != nullptr )
-		nthElement2->printNode();
+    Node* nthElement2 = head->getNthNodeFromEndDoublePointer( 0 );
+    if ( nthElement2 != nullptr )
+        nthElement2->printNode();
 
     return 0;
 }
