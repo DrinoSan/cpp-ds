@@ -19,7 +19,6 @@ struct S
     double m1;
     short  m2;
     char   m3;
-    //  private: int z; // warning: 'S' is a non-standard-layout type
 };
 
 int main( int argc, char* argv[] )
@@ -27,9 +26,6 @@ int main( int argc, char* argv[] )
     int  a    = 123;
     int* aPtr = &a;
 
-    // while(true)
-    {
-    }
 
     std::cout << "Address: " << aPtr << " Value: " << *aPtr << std::endl;
     aPtr += 4;   // Getting 16 bytes up in the memory.
